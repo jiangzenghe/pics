@@ -74,13 +74,13 @@ val.push({name: acah, value: 'Authorization,authorization,content-type,necaptcha
 错误
 1）<font color=red>Failed to load https://www.btb.com/api/account/asset/detail:</font>
 
-![情况1](https://app.yinxiang.com/shard/s59/res/7c2edd38-6b8b-4a67-a120-5cc6aa026c02/request-close-response-close-detail.png)
+![情况1](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-1.png?raw=true)
 
 <font color=red>Response for preflight has invalid HTTP status code 500.</font>
 
 2）<font color=red>Failed to load https://www.btb.com/api/bops-operation/bops/operation/banner/list?currentPage=1&device=0&pageSize=10:</font>
 
-![情况2](https://app.yinxiang.com/shard/s59/res/8082968f-ab24-48fc-a0f4-78a65a385c59/request-close-response-close-banner.png)
+![情况2](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-2.png?raw=true)
 
 <font color=red>Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://192.168.8.50:8080' is therefore not allowed access. The response had HTTP status code 403.</font>
 
@@ -88,24 +88,24 @@ val.push({name: acah, value: 'Authorization,authorization,content-type,necaptcha
 错误
 <font color=red>Failed to load https://www.btb.com/api/account/asset/detail:</font>
 
-![情况3](https://app.yinxiang.com/shard/s59/res/edfb764e-42ee-4279-b0f3-041daaea33df/request-on-response-close-detail.png)
+![情况3](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-3.png?raw=true)
 
 <font color=red>Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://192.168.8.50:8080' is therefore not allowed access.
 （200 都是200）</font>
-![情况4](https://app.yinxiang.com/shard/s59/res/7169133d-150a-4855-be5d-7466684bd115/request-on-response-close-banner.png)
+![情况4](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-4.png?raw=true)
 
 3.请求头修改 不开、响应头修改 开
 错误
 1）<font color=red>Failed to load https://www.btb.com/api/account/asset/detail:</font>
 
-![情况5](https://app.yinxiang.com/shard/s59/res/5c4f5754-7f0d-4ca9-8b76-f9039151286b/request-close-response-on-detail.png)
+![情况5](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-5.png?raw=true)
 
 <font color=red>Response to preflight request doesn't pass access control check: The 'Access-Control-Allow-Origin' header contains multiple values 'http://192.168.8.50:8080, *', but only one is allowed. Origin 'http://192.168.8.50:8080' is therefore not allowed access.
 （500）</font>
 
 2）<font color=red>Failed to load https://www.btb.com/api/bops-operation/bops/operation/banner/list?currentPage=1&device=0&pageSize=10:</font>
 
-![情况6](https://app.yinxiang.com/shard/s59/res/f77ce019-d078-4364-8da1-701e2bc2234d/request-close-response-on-banner.png)
+![情况6](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-6.png?raw=true)
 
 <font color=red>Response for preflight has invalid HTTP status code 403.</font>
 
@@ -113,11 +113,11 @@ val.push({name: acah, value: 'Authorization,authorization,content-type,necaptcha
 正常
 1）detail
 
-![情况7](https://app.yinxiang.com/shard/s59/res/a1179133-21d9-453f-b5da-246b8c47c0a8/request-on-response-on-detail.png)
+![情况7](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-7.png?raw=true)
 
 2）banner
 
-![情况8](https://app.yinxiang.com/shard/s59/res/ecbc3dfb-d8bf-4666-ab32-f78b6b400436/request-on-response-on-banner.png)
+![情况8](https://github.com/jiangzenghe/pics/blob/master/tech/20180717215720-8.png?raw=true)
 
 原理分析：
 相关跨域的基础分析：

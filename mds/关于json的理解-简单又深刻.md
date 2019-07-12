@@ -91,10 +91,10 @@ form部分不是实体，是gson.toJson(formBean),然后整体还是gson.toJson(
 注意对比代码和debug信息，看清楚就理解了。
 
 图1，代码部分
-![代码部分](https://app.yinxiang.com/shard/s59/res/c3f1fd40-c7bd-408c-9b37-c9435af1e9bf/json%E5%88%86%E6%9E%901.png)
+![代码部分](https://github.com/jiangzenghe/pics/blob/master/tech/20180724223145-1.png?raw=true)
 
 图2，debug信息部分
-![debug部分](https://app.yinxiang.com/shard/s59/res/6c73bb97-0caa-4443-aa6e-895afa9f5978/json%E5%88%86%E6%9E%902.png)
+![debug部分](https://github.com/jiangzenghe/pics/blob/master/tech/20180724223145-2.png?raw=true)
 
 Over，细节决定成败。
 字符串中的"和\都需要转义。简单情况只转义",如"{"a":"abc"}" ---> "{\"a\":\"abc\"}"

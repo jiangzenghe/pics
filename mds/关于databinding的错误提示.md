@@ -50,4 +50,4 @@ obtainCountryID，但是改动过程中把MeFragment的这个方法移到别的�
 吃饭之前还在嘲笑xt提的这个问题，结果回来这个问题就直接打脸，找了一个小时。。
 xt的问题如下：仔细对下吧，其实细节的提示差不多。其实都是编译失败，只不过as没有给红色的错误提示，没有给错误代码的标注展示。
 
-![as 错误提示](https://app.yinxiang.com/shard/s59/res/e631cc3c-016c-4b30-b241-3960e702561f/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_15307938708763.png)
+![as 错误提示](https://github.com/jiangzenghe/pics/blob/master/tech/20180705213059-1.png?raw=true)

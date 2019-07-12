@@ -27,16 +27,16 @@ Java、Code、Native、Others等的细分和沿时间线绘制Memory占用就不
 思路是有两个分支，一个是之前的notScale分支，不会轻易出现OOM；另外一个是scale分支，容易OOM，思路即选取几个关键节点，比如初始进入、1m和4m（一般scale分支在4m左右就会卡死，或者出现OOM，OOM和卡死的原因大致一致是因为GC来不及回收，一直GC耗尽CPU，释放完不成导致Memory也告罄），在这几个时间点dump heap，然后查看捕获的数据，对比相同时间点scale和notScale的after dump的内存构成。
 刚进入的时候，scale和notScale的内存占用差不多，1m节点scale和notScale的java内存已经有差距但不明显，3m节点两者但java内存差距已经挺大了要到10m左右的差距了。
 1.not-scale-start图
-![not-scale-start图](https://app.yinxiang.com/shard/s59/res/24d2ef8a-9aec-46e4-8a64-a9e39c792d82/not-scale-start.png)
+![not-scale-start图](https://github.com/jiangzenghe/pics/blob/master/tech/20181212114411-1.png?raw=true)
 
 2.scale-start图
-![scale-start图](https://app.yinxiang.com/shard/s59/res/f06e62ab-e347-4f8c-8d99-c4cc0b29b516/scale-start.png)
+![scale-start图](https://github.com/jiangzenghe/pics/blob/master/tech/20181212114411-2.png?raw=true)
 
 1m和3m的图就不上传了，对比发现not-scale分支中，能一直稳定的gc，然后每次gc之后的内存占用在15分钟之内一般维持在100m左右，但是scale分支的native和java内存增长非常迅速，一般在4分左右已经分别增长20m和10m，总体增长进三四十m。
 PS：保存或捕获heap dump非常蛋疼，一般第二次dump系统就会卡死，需要性能好一点的机器啊
 
 **scale-1min图**
-![scale-1min图](https://app.yinxiang.com/shard/s59/res/f9ca04d6-7164-4ec7-a4ae-6d40e45f8d59/scale-1m.png)
+![scale-1min图](https://github.com/jiangzenghe/pics/blob/master/tech/20181212114411-3.png?raw=true)
 
 可以看到not-scale的分支不管在几分钟，一般内存占用的排序是（按shallow size排序）byte[]、FinalizerReference、long等顺序可能有变化，但是占用的大头都是这几个。（没搞明白FinalizerReference是哪来的，可能跟heap dump有关），但是scale-1min里面，占用靠前的出来一个Float和Object[]，占用了3.6M，已经很大了。
 观察到这个之后，再进一步来分析，这次只调试scale分支，细致对比scale刚进入、1m和4m等时间节点，观察是不是上述Float等的占用在不断增长。
@@ -46,7 +46,7 @@ PS：保存或捕获heap dump非常蛋疼，一般第二次dump系统就会卡�
 
 那么最后的问题是代码的什么地方用到了Float，而且是什么原因导致了Float无法被释放呢？
 这时候就要借用Profiler提供的Instance和Callback来寻找了，其实在代码里全局搜索Float也可以笨办法找到，不过有点low的。<br>看截图
-![checkout-prof](https://app.yinxiang.com/shard/s59/res/00405276-362e-413a-abcb-4302d02b472b/oom-capture.png)
+![checkout-prof](https://github.com/jiangzenghe/pics/blob/master/tech/20181212114411-4.png?raw=true)
 
 题外话：搞清楚Total Count、Heap Count、Sizeof、Shallow Size、Retained Size、Depth、Dominating Size等概念
 

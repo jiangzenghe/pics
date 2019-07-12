@@ -8,7 +8,7 @@ listview异步加载图片大家都知道有复用问题
 
 ### 1.在滑动过程中，会出现复用 如图所示
 
-![ListView复用](http://img.blog.csdn.net/20161109102121564)
+![ListView复用](https://github.com/jiangzenghe/pics/blob/master/tech/20180304092755-1.png?raw=true)
 
 <!--more-->
 
