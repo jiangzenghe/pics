@@ -33,7 +33,7 @@ important-有助于帮助查找问题并解决
 重新查看了下我们的库引用验证码库的方式，是直接把腾讯提供的aar包copy到我们的库工程的libs里面，最后我们提供给其他人使用的时候，
 又是打包了我们自己的aar库上传至我们的maven仓库。
 
-###问题过程
+### 问题过程
 先看日志，开始怀疑是混淆问题，后来仔细看了下，google下发现应该是找不到R里面的某个文件，跟一般的NoClassdefFoundError并
 不同。最开始的修改implement为api的形式，并不能解决问题，还是NoClassdefFoundError。
 如果腾讯能提供lib库工程的方式添加引用，那么就没什么问题，但是他们提供的是arr包，我们又是提供给其他人arr包，导致打出的包里面缺失
@@ -91,11 +91,11 @@ return id;
 
 原来使用R.layout.***的地方用getResourseIdByName(context.getPackageName(), "layout", "***")的方式。
 
-###问题解决
+### 问题解决
 最后还是通过把aar包中的所有代码都copy到现代码中去，保持混淆，把资源都copy到现工程的res中才解决这问题。
 重视：
 以后还是要在自己这边严格按照流程过完才可以。否则就太坑了。
 
-###延伸
+### 延伸
 关于验证的核心应该在assets的tcaptcha_webview.html文件里，原生代码量并不多所以我可以直接copy解决这个问题，
 后续可以研究下腾讯防水墙的实现细节。

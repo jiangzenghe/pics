@@ -4,7 +4,7 @@ date: 2019-02-02 17:55:10
 tags: Android
 ---
 
-###场景描述
+### 场景描述
 根据看书的小蜗牛的示例，写了一个全屏Dialog的DialogFragment实现，结果在运行的时候发现，如果重写onCreteView使用自己的layout，
 就会闪退，报错android.util.AndroidRuntimeException: requestFeature() must be called before adding content。
 改为默认的DialogFragment的super.onCreateView(inflater, container, savedInstanceState);就不会崩溃，但是达不到全屏
@@ -40,7 +40,7 @@ return inflater.inflate(R.layout.fragment_full_dialog, container, false);
 报错android.util.AndroidRuntimeException: requestFeature() must be called before adding content
 字面意思是不能在setContentView之后调用requestFeature，但是尼玛我明明是在setContentView之前调用的requestFeature啊
 
-###寻找
+### 寻找
 反复实验，onCreateView默认的方法返回null，如果重写了则会让DialogFragment的mView不为空。
 而在DialogFragment的onActivityCreated中，如果mView不为空，会调用setContentView，代码如下
 
@@ -109,14 +109,14 @@ onStart方法会调用mDialog.show(),而在show中依次会调用onCreate，调�
 com.android.internal.app.AlertController和android.support.v7.app.AlertController,
 两者的installContent实现是不同的，前者调用了mWindow.setContentView，分析到这里，真相大白。
 
-###结论
+### 结论
 跟support-v？有关
 AlertDialog的正常版与support版本的代码实现并不相同
 
 根本原因是调用了两次setContentView
 另外严格注意兼容碎片包导致的问题，严格注意应该使用的版本库，一不小心就弄错了，一般来说最好使用兼容包。
 
-###节外生枝
+### 节外生枝
 
 ```java
 java.lang.IllegalStateException: You need to use a Theme.AppCompat theme (or descendant) with this activity.
@@ -135,5 +135,5 @@ at android.support.v4.app.BackStackRecord.executeOps(BackStackRecord.java:797)
 
 以上报错是修改为support的Activity包之后，新的报错，跟主题有关的，根据对应提示添加一下就可以了
 
-###拓展
+### 拓展
 在回顾下关于兼容包-support v4和v7等的知识，做下总结。
