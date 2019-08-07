@@ -15,8 +15,8 @@ tags: Android
 但是为什么FragmentStatePagerAdapter可以做到刷新数据，但是FragmentPagerAdapter不可以呢？
 
 PS:<font color=red>关键的版本声明：</font>
-本篇涉及的代码，是在android 6.0的大版本下的描述，在android 7.0即21版本下的版本查看，有些关于moveToState和detachFragment、removeFragment的源码并不一致，可能最后的分析仍然有效，官方代码两版本逻辑的可能没变。
-但是仍然有必要申明在借鉴@爱看书的小蜗牛的源码分析之后，在21版本下发现代码实际有出入，导致非常难核实验证到问题的关键，最后在6.0版本才看到跟分析源码一致的代码。
+本篇涉及的代码，是在android 6.0的大版本下的描述，在android 8.1即27版本下的版本查看，有些关于moveToState和detachFragment、removeFragment的源码并不一致，可能最后的分析仍然有效，官方代码两版本逻辑的可能没变。
+但是仍然有必要申明在借鉴@爱看书的小蜗牛的源码分析之后，在27版本下发现代码实际有出入，导致非常难核实验证到问题的关键，最后在6.0版本才看到跟分析源码一致的代码。
 
 <!--more-->
 
