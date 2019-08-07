@@ -5,8 +5,7 @@ tags: Android
 ---
 
 ### 问题描述
-记得很久之前，曾经用ViewPager+Fragment+Adapter做过一个页面，在Activity中嵌入三个可滑动切换的Fragment，Activity自身可以刷新，按理说刷新之后嵌入的三个Fragment的数据
-也应该会刷新掉（onRefresh之后通过重新调用setAdapter刷新数据），但是好像出现问题，三个子Fragment的数据并没有刷新。这里找下原因与细节的差异。
+记得很久之前，曾经用ViewPager+Fragment+Adapter做过一个页面，在Activity中嵌入三个可滑动切换的Fragment，Activity自身可以刷新，按理说刷新之后嵌入的三个Fragment的数据也应该会刷新掉（onRefresh之后通过重新调用setAdapter刷新数据），但是好像出现问题，三个子Fragment的数据并没有刷新。这里找下原因与细节的差异。
 
 补充：
 并不只是三个Fragment的数据应该被刷新而没刷新，而是N个子Fragment的N需要被刷新，例如本来是3个子Fragment，但是新的数据过来，应该要变化为4个子Fragment，而且各Fragment的数据已经发生变化。
@@ -22,8 +21,7 @@ PS:<font color=red>关键的版本声明：</font>
 <!--more-->
 
 ### 基础信息
-两种FragmentPagerAdapter都继承自PagerAdapter，其实现最终会决定FragmentManager中管理Fragment的细节，所以在开始之前，有必要搞清楚FragmentManager对于Fragment
-的管理细节
+两种FragmentPagerAdapter都继承自PagerAdapter，其实现最终会决定FragmentManager中管理Fragment的细节，所以在开始之前，有必要搞清楚FragmentManager对于Fragment的管理细节
 
 重点关注moveToState函数，设计到Fragment的状态转化。
 
